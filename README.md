@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Particle Play
+
+A WebGL-based particle simulation with gravitational interactions. This project demonstrates how to create GPU-accelerated particle effects using WebGL in a Next.js environment.
+
+## Features
+
+- Real-time particle simulation with gravitational physics
+- Each particle interacts with others based on mass and distance
+- Interactive controls to adjust simulation parameters
+- GPU-accelerated rendering with WebGL
+- Fully responsive design that fills the viewport
 
 ## Getting Started
 
-First, run the development server:
+This project uses [Bun](https://bun.sh) as its package manager and runtime.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Install dependencies
+bun install
+
+# Run development server with Turbopack
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the simulation.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technology Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework**: [Next.js 15](https://nextjs.org/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Runtime**: [Bun](https://bun.sh)
+- **Graphics**: WebGL with custom GLSL shaders
+- **Styling**: Tailwind CSS
 
-## Learn More
+## Simulation Controls
 
-To learn more about Next.js, take a look at the following resources:
+When running the simulation, you can adjust various parameters using the control panel:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Gravity Strength**: Controls how strongly particles attract each other
+- **Gravity Radius**: Sets the maximum distance at which particles influence each other
+- **Repulsion Distance**: Sets how close particles need to be before they start repelling
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Physics Model
 
-## Deploy on Vercel
+The simulation implements a simplified version of gravitational physics where:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Each particle has its own mass and velocity
+- Gravity follows an inverse square law (F = G _ m1 _ m2 / r²)
+- Particles wrap around screen edges to create an infinite space effect
